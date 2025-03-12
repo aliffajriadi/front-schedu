@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <script defer>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+</head>
+
+<body class="bg-no-repeat bg-[url('image/image1.png')]">
+  <!-- NAVIGATION BAR -->
+  <nav class="fixed top-0 left-0 w-full z-50 bg-white bg-opacity-70 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- LOGO -->
+        <div class="flex text-2xl sm:text-4xl">
+          <a href="#" class="font-bold text-green-300">Sched</a>
+          <a href="#" class="font-bold text-yellow-300">U</a>
+        </div>
+        
+        <!-- HAMBURGER ICON (MOBILE) -->
+        <div class="md:hidden">
+          <button onclick="toggleMenu()" class="text-gray-500 hover:text-blue-500 focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- NAVIGATION LINKS (DESKTOP) -->
+        <div class="hidden md:flex space-x-4 p-4 font-bold">
+          <a href="#" class="hover:text-blue-500">Home</a>
+          <a href="#" class="hover:text-blue-500">About Us</a>
+          <a href="#" class="hover:text-blue-500">Feature</a>
+          <a href="#" class="hover:text-blue-500">Report</a>
+          <a href="#" class="flex items-center text-white bg-blue-800 hover:text-blue-500 rounded-[20px] px-4 py-1">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25a2.25 2.25 0 00-2.25-2.25h-7.5a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 006 21h7.5a2.25 2.25 0 002.25-2.25V15M18 7.5l3 3m0 0l-3 3m3-3H9" />
+            </svg>
+            Sign In
+          </a>
+        </div>
+      </div>
+
+      <!-- MOBILE MENU -->
+      <div id="mobile-menu" class="md:hidden hidden flex-col space-y-2 p-4 font-bold bg-white bg-opacity-90 rounded-lg">
+        <a href="#" class="hover:text-blue-500">Home</a>
+        <a href="#" class="hover:text-blue-500">About Us</a>
+        <a href="#" class="hover:text-blue-500">Feature</a>
+        <a href="#" class="hover:text-blue-500">Report</a>
+        <a href="#" class="flex items-center text-white bg-blue-800 hover:text-blue-500 rounded-[20px] px-4 py-1">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25a2.25 2.25 0 00-2.25-2.25h-7.5a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 006 21h7.5a2.25 2.25 0 002.25-2.25V15M18 7.5l3 3m0 0l-3 3m3-3H9" />
+          </svg>
+          Sign In
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex flex-col items-center md:items-start justify-center h-screen p-8 md:p-16 text-center md:text-left">
+    <h1 class="text-4xl sm:text-6xl lg:text-8xl font-bold text-blue-800">
+      Your Daily <span class="text-green-300">Plans</span>,<br>
+      All In <span class="text-yellow-300">One</span> Place
+    </h1>
+    <h2 class="text-lg sm:text-2xl mt-4">Manage your tasks, events, and notes without the clutter.</h2>
+    <a href="#" class="mt-6 inline-block bg-blue-700 text-white px-6 py-2 rounded-[20px] hover:bg-blue-800">Get Started</a>
+  </main>
+  
+
+  <!-- ABOUT US SECTION -->
+  <section class="bg-white p-8 md:p-16 lg:p-32 flex flex-col lg:flex-row items-center gap-8 md:gap-16 min-h-screen">
+    <div class="flex-1 text-left">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-8 lg:mb-12 text-blue-800">
+        About Us
+      </h1>
+      <p class="text-lg md:text-xl lg:text-2xl text-black leading-relaxed">
+        Selamat datang di SchedU, platform yang dirancang khusus untuk membantu mahasiswa dalam mengelola jadwal perkuliahan, tugas, dan kolaborasi akademik secara efektif.
+        Kami memahami betapa pentingnya manajemen waktu dalam kehidupan perkuliahan, itulah sebabnya kami menyediakan fitur pengingat otomatis untuk jadwal kuliah, deadline tugas, serta sistem kolaborasi yang memudahkan komunikasi dalam kerja kelompok.
+      </p>
+    </div>
+    <div class="flex-1 flex justify-center">
+      <img src="./image/image2.png" alt="Gambar" class="w-full max-w-xs md:max-w-md object-contain" />
+    </div>
+  </section>
+</body>
+</html>
