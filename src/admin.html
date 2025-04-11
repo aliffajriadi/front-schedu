@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      * {
+        font-family: "Poppins", sans-serif;
+      }
+      aside::-webkit-scrollbar {
+        width: 8px;
+      }
+      aside::-webkit-scrollbar-track {
+        background: #d1fae5;
+        border-radius: 1px;
+      }
+      aside::-webkit-scrollbar-thumb {
+        background: #119d6f;
+        border-radius: 5px;
+      }
+      aside::-webkit-scrollbar-thumb:hover {
+        background: #059669;
+      }
+      #menuMobile {
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        transform: translateX(-100%);
+        opacity: 0;
+        top: 0;
+        left: 0;
+        height: 100%;
+      }
+      #menuMobile.active {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      .menu-item {
+        transition: all 0.2s ease;
+      }
+      .menu-item:hover {
+        transform: translateX(5px);
+      }
+      .hamburger-line {
+        transition: all 0.3s ease;
+      }
+      .menu-open .line-1 {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .menu-open .line-2 {
+        opacity: 0;
+      }
+      .menu-open .line-3 {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+    </style>
+  </head>
+  <body class="bg-emerald-50 md:flex h-screen">
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-emerald-500 text-white flex-col p-4 fixed h-screen overflow-y-auto hidden md:flex">
+      <div class="flex justify-center bg-emerald-500 mb-2">
+        <img src="./image/logowhite.png" alt="logo" class="w-36 h-auto" />
+      </div>
+      <p class="text-sm py-2 text-emerald-100 font-medium">MENU</p>
+      <div>
+        <div class="flex items-center gap-2 p-2 hover:bg-green-400 rounded-xl cursor-pointer menu-item">
+          <img src="assets/Home.svg" class="w-5 h-auto" />
+          <a href="#" class="font-semibold">Dashboard</a>
+        </div>
+        <div class="flex items-center gap-2 p-2 hover:bg-green-400 rounded-xl cursor-pointer menu-item">
+          <img src="assets/bx-task (1) 2.svg" class="w-5 h-auto" />
+          <a href="#" class="font-semibold">Manage Instances</a>
+        </div>
+      </div>
+      <p class="text-sm py-2 mt-4 text-emerald-100 font-medium">SETTING</p>
+      <div>
+        <div class="flex items-center gap-2 p-2 hover:bg-green-400 rounded-xl cursor-pointer menu-item">
+          <img src="assets/Log out.svg" class="w-5 h-auto" />
+          <a href="#" class="font-semibold">Logout</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- NAV MOBILE -->
+    <nav class="flex justify-between px-6 bg-white fixed top-0 w-full left-0 py-2 shadow-md md:hidden items-center z-40">
+      <button class="focus:outline-none" id="menuToggle" onclick="toggleMenu()">
+        <div class="flex flex-col justify-between h-6 w-8">
+          <span class="block h-1 w-8 bg-emerald-500 rounded hamburger-line line-1"></span>
+          <span class="block h-1 w-8 bg-emerald-500 rounded hamburger-line line-2"></span>
+          <span class="block h-1 w-8 bg-emerald-500 rounded hamburger-line line-3"></span>
+        </div>
+      </button>
+      <img src="image/image4.png" class="w-32 h-auto" alt="schedu" />
+      <img src="image/image22.png" class="w-10 h-10 border-2 border-green-500 rounded-full shadow-md cursor-pointer" alt="profile" />
+    </nav>
+
+    <!-- MENU MOBILE -->
+    <aside id="menuMobile" class="w-4/5 max-w-xs bg-emerald-500 text-white flex-col p-5 fixed z-50 md:hidden overflow-y-auto">
+      <div class="flex justify-between items-center mb-6 pt-3">
+        <img src="./image/logowhite.png" alt="logo" class="w-28 h-auto" />
+        <button class="text-white" onclick="toggleMenu()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <p class="text-sm py-2 text-emerald-100 font-medium">MENU</p>
+      <div>
+        <div class="flex items-center gap-2 p-2 hover:bg-green-400 rounded-xl cursor-pointer menu-item">
+          <img src="assets/Home.svg" class="w-5 h-auto" />
+          <a href="#" class="font-semibold">Dashboard</a>
+        </div>
+        <div class="flex items-center gap-2 p-2 hover:bg-green-400 rounded-xl cursor-pointer menu-item">
+          <img src="assets/bx-task (1) 2.svg" class="w-5 h-auto" />
+          <a href="#" class="font-semibold">Manage Instances</a>
+        </div>
+      </div>
+      <p class="text-sm py-2 mt-4 text-emerald-100 font-medium">SETTING</p>
+      <div>
+        <div class="flex items-center gap-2 p-2 hover:bg-green-400 rounded-xl cursor-pointer menu-item">
+          <img src="assets/Log out.svg" class="w-5 h-auto" />
+          <a href="#" class="font-semibold">Logout</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="flex-1 p-4 md:pl-72 pt-20 md:pt-6">
+      <div class="flex justify-between items-center mb-4">
+        <h1 class="text-lg md:text-2xl font-semibold text-emerald-800">Dashboard</h1>
+        <img src="image/profile.jpg" class="w-10 md:w-12 h-auto rounded-full" alt="profile" />
+      </div>
+
+      <div class="bg-white p-4 md:p-6 mb-6 rounded-xl">
+        <div class="flex justify-between mb-3 items-center">
+          <p class="text-lg md:text-2xl font-bold">My Account</p>
+          <a href="#"><img src="assets/Vector 6.svg" class="w-3 hover:w-4 transition-all duration-300" alt="accountpage"></a>
+        </div>
+        <div class="bg-emerald-500 rounded-full p-2 flex text-white items-center">
+          <img src="image/profile.jpg" class="w-14 h-auto rounded-full" alt="profile">
+          <div class="ps-2">
+            <h4 class="text-base md:text-xl">Pipip</h4>
+            <p class="text-sm">admin</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:flex lg:space-x-6 mb-6">
+        <div class="bg-white p-4 rounded-xl shadow-md text-center">
+          <p class="text-sm text-gray-600">Total Teacher</p>
+          <p class="text-2xl font-bold text-emerald-600">5</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow-md text-center">
+          <p class="text-sm text-gray-600">Total Class</p>
+          <p class="text-2xl font-bold text-emerald-600">5</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow-md text-center">
+          <p class="text-sm text-gray-600">Total Students</p>
+          <p class="text-2xl font-bold text-emerald-600">58</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow-md text-center">
+          <p class="text-sm text-gray-600">Total Staff</p>
+          <p class="text-2xl font-bold text-emerald-600">5</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow-md text-center col-span-2 sm:col-span-1">
+          <p class="text-sm text-gray-600">Total Instance</p>
+          <p class="text-2xl font-bold text-emerald-600">9</p>
+        </div>
+      </div>
+
+      <div class="bg-white p-4 md:p-6 rounded-xl shadow-md">
+        <h2 class="text-lg font-semibold mb-4">Active Group</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[600px] text-left border-collapse">
+            <thead>
+              <tr class="text-sm text-black">
+                <th class="p-2">Name</th>
+                <th class="p-2">Address</th>
+                <th class="p-2">Class</th>
+                <th class="p-2">Gender</th>
+                <th class="p-2">Role</th>
+                <th class="p-2">Action</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm text-black">
+              <tr class="odd:bg-gray-100">
+                <td class="p-2">Class A</td>
+                <td class="p-2">Jl. Raya Sukabumi, Perumahan Bumi 2</td>
+                <td class="p-2">Class 8</td>
+                <td class="p-2">Male</td>
+                <td class="p-2">Student</td>
+                <td class="p-2">
+                  <div class="flex items-center gap-2">
+                    <img src="assets/pencil.svg" class="w-5 h-auto bg-emerald-500 rounded p-1" />
+                  </div>
+                </td>
+              </tr>
+              <tr class="odd:bg-gray-100">
+                <td class="p-2">Class B</td>
+                <td class="p-2">Titon, Sukabumi, Perumahan Cipta Garden</td>
+                <td class="p-2">Class 8</td>
+                <td class="p-2">Male</td>
+                <td class="p-2">Student</td>
+                <td class="p-2">
+                  <div class="flex items-center gap-2">
+                    <img src="assets/pencil.svg" class="w-5 h-auto bg-emerald-500 rounded p-1" />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById("menuMobile");
+        const menuButton = document.getElementById("menuToggle");
+        menu.classList.toggle("active");
+        menuButton.classList.toggle("menu-open");
+      }
+    </script>
+  </body>
+</html>
