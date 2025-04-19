@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Staff</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      * {
+        font-family: "Poppins", sans-serif;
+      }
+      aside::-webkit-scrollbar {
+        width: 8px;
+      }
+      aside::-webkit-scrollbar-track {
+        background: #d1fae5;
+        border-radius: 1px;
+      }
+      aside::-webkit-scrollbar-thumb {
+        background: #119d6f;
+        border-radius: 5px;
+      }
+      aside::-webkit-scrollbar-thumb:hover {
+        background: #059669;
+      }
+      #menuMobile {
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        transform: translateX(-100%);
+        opacity: 0;
+        top: 0;
+        left: 0;
+        height: 100%;
+      }
+      #menuMobile.active {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      .menu-item {
+        transition: all 0.2s ease;
+      }
+      .menu-item:hover {
+        transform: translateX(5px);
+      }
+      .hamburger-line {
+        transition: all 0.3s ease;
+      }
+      .menu-open .line-1 {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .menu-open .line-2 {
+        opacity: 0;
+      }
+      .menu-open .line-3 {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+    </style>
+  </head>
+  <body class="bg-emerald-50 md:flex h-screen">
+    <aside class="w-64 bg-emerald-500 text-white flex-col p-4 fixed h-screen overflow-y-auto hidden md:flex">
+      <div class="flex justify-center bg-emerald-500 mb-2">
+        <img src="./image/logowhite.png" alt="logo" class="w-36 h-auto" />
+      </div>
+      <p class="text-sm py-2 text-emerald-100 font-medium">MENU</p>
+      <div>
+        <div class="flex items-center gap-2 p-2 hover:bg-green-400 rounded-xl cursor-pointer menu-item">
+          <img src="assets/Home.svg" class="w-5 h-auto" />
+          <a href="#" class="font-semibold">Dashboard</a>
+        </div>
+        <div class="flex items-center gap-2 p-2 hover:bg-green-400 rounded-xl cursor-pointer menu-item">
+          <img src="assets/bx-task (1) 2.svg" class="w-5 h-auto" />
+          <a href="#" class="font-semibold">Manage Account</a>
+        </div>
+        <div class="flex items-center gap-2 p-2 hover:bg-green-400 rounded-xl cursor-pointer menu-item">
+            <img src="assets/bx-calendar-event 2.svg" class="w-5 h-auto" />
+            <a href="#" class="font-semibold">Manage Group</a>
+          </div>
+          <div class="flex items-center gap-2 p-2 hover:bg-green-400 rounded-xl cursor-pointer menu-item">
+            <img src="assets/notifications.svg" class="w-5 h-auto" />
+            <a href="#" class="font-semibold">Notification</a>
+          </div>
+      </div>
+      <p class="text-sm py-2 mt-4 text-emerald-100 font-medium">SETTING</p>
+      <div>
+        <div class="flex items-center gap-2 p-2 hover:bg-green-400 rounded-xl cursor-pointer menu-item">
+            <img src="assets/profile-user-avatar-man-person-svgrepo-com 1.svg" class="w-5 h-auto" />
+            <a href="#" class="font-semibold">My profile</a>
+          </div>
+        <div class="flex items-center gap-2 p-2 hover:bg-green-400 rounded-xl cursor-pointer menu-item">
+          <img src="assets/Log out.svg" class="w-5 h-auto" />
+          <a href="#" class="font-semibold">Logout</a>
+        </div>
+      </div>
+    </aside>
+
+    <nav class="flex justify-between px-6 bg-white fixed top-0 w-full left-0 py-2 shadow-md md:hidden items-center z-40">
+      <button class="focus:outline-none" id="menuToggle" onclick="toggleMenu()">
+        <div class="flex flex-col justify-between h-6 w-8">
+          <span class="block h-1 w-8 bg-emerald-500 rounded hamburger-line line-1"></span>
+          <span class="block h-1 w-8 bg-emerald-500 rounded hamburger-line line-2"></span>
+          <span class="block h-1 w-8 bg-emerald-500 rounded hamburger-line line-3"></span>
+        </div>
+      </button>
+      <img src="image/image4.png" class="w-32 h-auto" alt="schedu" />
+      <img src="image/profile.jpg" class="w-10 h-10 border-2 border-green-500 rounded-full shadow-md cursor-pointer" alt="profile" />
+    </nav>
+
+    <aside id="menuMobile" class="w-4/5 max-w-xs bg-emerald-500 text-white flex-col p-5 fixed z-50 md:hidden overflow-y-auto">
+      <div class="flex justify-between items-center mb-6 pt-3">
+        <img src="./image/logowhite.png" alt="logo" class="w-28 h-auto" />
+        <button class="text-white" onclick="toggleMenu()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <p class="text-sm py-2 text-emerald-100 font-medium">MENU</p>
+      <div>
+        <div class="flex items-center gap-2 p-2 hover:bg-green-400 rounded-xl cursor-pointer menu-item">
+          <img src="assets/Home.svg" class="w-5 h-auto" />
+          <a href="#" class="font-semibold">Dashboard</a>
+        </div>
+        <div class="flex items-center gap-2 p-2 hover:bg-green-400 rounded-xl cursor-pointer menu-item">
+          <img src="assets/bx-task (1) 2.svg" class="w-5 h-auto" />
+          <a href="#" class="font-semibold">Manage Account</a>
+        </div>
+        <div class="flex items-center gap-2 p-2 hover:bg-green-400 rounded-xl cursor-pointer menu-item">
+            <img src="assets/bx-calendar-event 2.svg" class="w-5 h-auto" />
+            <a href="#" class="font-semibold">Manage Group</a>
+          </div>
+          <div class="flex items-center gap-2 p-2 hover:bg-green-400 rounded-xl cursor-pointer menu-item">
+            <img src="assets/notifications.svg" class="w-5 h-auto" />
+            <a href="#" class="font-semibold">Notification</a>
+          </div>
+      </div>
+      <p class="text-sm py-2 mt-4 text-emerald-100 font-medium">SETTING</p>
+      <div>
+        <div class="flex items-center gap-2 p-2 hover:bg-green-400 rounded-xl cursor-pointer menu-item">
+            <img src="assets/profile-user-avatar-man-person-svgrepo-com 1.svg" class="w-5 h-auto" />
+            <a href="#" class="font-semibold">My profile</a>
+          </div>
+        <div class="flex items-center gap-2 p-2 hover:bg-green-400 rounded-xl cursor-pointer menu-item">
+          <img src="assets/Log out.svg" class="w-5 h-auto" />
+          <a href="#" class="font-semibold">Logout</a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="flex-1 p-4 md:p-6 mt-14 md:mt-0 md:ml-64">
+      <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4 gap-2">
+        <h1 class="text-lg md:text-2xl font-semibold text-emerald-800">Manage Account</h1>
+        <img src="image/profile.jpg" class="hidden md:block w-10 md:w-12 h-auto rounded-full" alt="profile" />
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div>
+          <div class="bg-white p-6 rounded-xl shadow-md">
+            <h2 class="text-lg font-semibold mb-4">Create Account</h2>
+            <form class="space-y-4">
+              <input type="text" placeholder="Name" class="w-full px-4 py-2 border rounded" />
+              <input type="text" placeholder="Nobeg" class="w-full px-4 py-2 border rounded" />
+              <input type="text" placeholder="Address" class="w-full px-4 py-2 border rounded" />
+              <div>
+                <label class="block mb-1">Birth Date</label>
+                <input type="date" class="w-full px-4 py-2 border rounded" />
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <select class="px-4 py-2 border rounded">
+                  <option>Select Class</option>
+                  <option>Class A</option>
+                </select>
+                <select class="px-4 py-2 border rounded">
+                  <option>Select Gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+                <select class="px-4 py-2 border rounded">
+                  <option>Select Role</option>
+                  <option>Student</option>
+                  <option>Teacher</option>
+                </select>
+              </div>
+              <button type="submit" class="bg-emerald-600 text-white px-6 py-2 rounded hover:bg-emerald-700">
+                Create
+              </button>
+            </form>
+          </div>
+
+          <div class="mt-6 bg-white p-6 border-dashed border-2 border-gray-300 rounded-xl flex flex-col items-center justify-center text-center h-40">
+            <span class="material-icons text-4xl text-gray-400">upload_file</span>
+            <p class="text-sm text-gray-500">Drag and Drop file <br><span class="text-emerald-600 font-medium">or</span></p>
+            <button class="mt-2 px-4 py-1 border border-emerald-600 text-emerald-600 rounded hover:bg-emerald-100">Browse</button>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <h2 class="text-lg font-semibold mb-4">Account List</h2>
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-sm text-left">
+              <thead class="bg-gray-100 text-gray-600">
+                <tr>
+                  <th class="px-4 py-2">Name</th>
+                  <th class="px-4 py-2">Address</th>
+                  <th class="px-4 py-2">Class</th>
+                  <th class="px-4 py-2">Gender</th>
+                  <th class="px-4 py-2">Role</th>
+                  <th class="px-4 py-2">Action</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y">
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-2">Apip Henriko Dachi</td>
+                  <td class="px-4 py-2">Batu Ajo, Sekupang perum Tiban 3</td>
+                  <td class="px-4 py-2">Class A</td>
+                  <td class="px-4 py-2">Male</td>
+                  <td class="px-4 py-2">Student</td>
+                  <td class="py-2 px-4">
+                    <a href="#" class="text-emerald-500 hover:text-emerald-600">
+                      <img src="assets/Group.svg" class="w-5 inline" alt="Edit">
+                    </a>
+                  </td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-2">Apip Henriko Dachi</td>
+                    <td class="px-4 py-2">Batu Ajo, Sekupang perum Tiban 3</td>
+                    <td class="px-4 py-2">Class A</td>
+                    <td class="px-4 py-2">Male</td>
+                    <td class="px-4 py-2">Student</td>
+                    <td class="py-2 px-4">
+                      <a href="#" class="text-emerald-500 hover:text-emerald-600">
+                        <img src="assets/Group.svg" class="w-5 inline" alt="Edit">
+                      </a>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-2">Apip Henriko Dachi</td>
+                    <td class="px-4 py-2">Batu Ajo, Sekupang perum Tiban 3</td>
+                    <td class="px-4 py-2">Class A</td>
+                    <td class="px-4 py-2">Male</td>
+                    <td class="px-4 py-2">Student</td>
+                    <td class="py-2 px-4">
+                      <a href="#" class="text-emerald-500 hover:text-emerald-600">
+                        <img src="assets/Group.svg" class="w-5 inline" alt="Edit">
+                      </a>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-2">Apip Henriko Dachi</td>
+                    <td class="px-4 py-2">Batu Ajo, Sekupang perum Tiban 3</td>
+                    <td class="px-4 py-2">Class A</td>
+                    <td class="px-4 py-2">Male</td>
+                    <td class="px-4 py-2">Student</td>
+                    <td class="py-2 px-4">
+                      <a href="#" class="text-emerald-500 hover:text-emerald-600">
+                        <img src="assets/Group.svg" class="w-5 inline" alt="Edit">
+                      </a>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-2">Apip Henriko Dachi</td>
+                    <td class="px-4 py-2">Batu Ajo, Sekupang perum Tiban 3</td>
+                    <td class="px-4 py-2">Class A</td>
+                    <td class="px-4 py-2">Male</td>
+                    <td class="px-4 py-2">Student</td>
+                    <td class="py-2 px-4">
+                      <a href="#" class="text-emerald-500 hover:text-emerald-600">
+                        <img src="assets/Group.svg" class="w-5 inline" alt="Edit">
+                      </a>
+                    </td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById("menuMobile");
+        menu.classList.toggle("active");
+        document.getElementById("menuToggle").classList.toggle("menu-open");
+      }
+    </script>
+  </body>
+</html>
